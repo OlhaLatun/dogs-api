@@ -1,0 +1,35 @@
+
+#root {
+    .row {
+        display: flex;
+        margin-bottom: 10px;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .container {
+        flex-direction: column;
+        padding-top: 10px;
+        background-color: #fff;
+        border-radius: 20px;
+    }
+
+    .home-page{
+        position: relative;
+        height: 100vh;
+        background: center/cover no-repeat url(./girl-and-pet.png);
+    
+        .home-page-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            z-index: -1;
+            margin: 30px;
+            height: 100vh;
+            background-color: #FBE0DC;
+            border-radius: 20px;
+        }
+    }
+}

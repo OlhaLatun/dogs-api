@@ -1,0 +1,18 @@
+.like-dislike-navigation {
+    .like-dislike-btn  {
+        margin: 5px;
+        background-color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        &:hover {
+            background-color: #FBE0DC;   
+        }
+        &:active {
+            background-color: #FF868E;   
+        }
+        &:active svg path{
+           fill: #fff;
+        }
+    }
+}

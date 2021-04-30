@@ -1,0 +1,76 @@
+
+body {
+    background-color: #F8F8F7;
+    font-family: Jost, sans-serif;
+}
+
+#root {
+    position: relative;
+    width: 100vw;
+    display: flex;
+   
+    .base, .mutable {
+        width: 50vw;
+        padding-top: 30px;
+    }
+
+    .base {
+        position: sticky;
+        top: 0;
+        margin-left: 145px;
+        .logo {
+            margin-bottom: 85px;
+        }
+        .description {
+            margin-bottom: 60px;
+            color: #8C8C8C;
+        }
+
+        .navigation {
+            display: flex;
+            .card {    
+                text-align: center;
+                margin: 8px;
+             .card-img {
+                width: 140px;
+                height: 200px;
+                border: 4px solid rgba(255, 255, 255, 0.6);
+                border-radius: 20px;
+                }
+                .card-voting {
+                background: no-repeat center url(./vote-table.png) #B4B7FF;
+                }
+                .card-breeds {
+                background: no-repeat center url(./pet-breeds.png) #97EAB9;
+                }
+                .card-gallery {
+                background: no-repeat center url(./images-search.png) #FFD280;
+                } 
+                .nav-btn {
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 10px;
+                    text-transform: uppercase;
+                    border: none;
+                    color: #FF868E;
+                    background-color: #fff;
+                    border-radius: 10px;
+                }
+            }
+            .card:hover > .nav-btn{
+                background-color: #FBE0DC;   
+            }
+            .card:hover > .card-img {
+                border-color: #fff;
+            }
+            .card:active > .nav-btn{
+                background-color: #FF868E;   
+                color: #fff;
+            }
+            .card:active > .card-img {
+                border-color: #FBE0DC;
+            }
+        }
+    }
+}
+
