@@ -6,13 +6,19 @@ import imagesSearch from '../app/images-search.png'
 import Container from '../container/container'
 import '../app/app.scss'
 
-const HomePageNavigation = () => {
-    const navItems = [
-        { id: 'v', name: 'voting', img: voteTable},
-        {id: 'b', name: 'breeds', img: petBreeds},
-        {id: 'g', name: 'gallery', img: imagesSearch},
-    ]
+class HomePageNavigation extends Component  {
 
+    onClickChange = (route) => {
+            this.props.onRouteChange(route)
+    }
+
+    render() {
+        const navItems = [
+            { id: 'v', name: 'voting', img: voteTable},
+            {id: 'b', name: 'breeds', img: petBreeds},
+            {id: 'g', name: 'gallery', img: imagesSearch},
+        ]
+   
     return (
         <React.Fragment>
         <img className='logo' src={logo}/>
@@ -25,7 +31,7 @@ const HomePageNavigation = () => {
                         <div key={item.id} className='card'>
                             <div className={`card-img card-${item.name}`}>
                             </div>
-                            <button className='nav-btn' onClick={() => console.log('clicked', item.name)}>
+                            <button className='nav-btn' onClick={() => this.onClickChange(item.name)}>
                                 {item.name}
                             </button>
                         </div>  
@@ -35,16 +41,27 @@ const HomePageNavigation = () => {
         </div>
         </React.Fragment>
     )
+    }
 }
 
 export default class App extends Component {
+
+    state = {
+        route: null
+    }
+
+    routeChange = (route) => {
+       this.setState({route})
+    }
+
     render() {
+
         return (
             <React.Fragment>
             <div className='base'>
-                <HomePageNavigation />
+                <HomePageNavigation onRouteChange={this.routeChange}/>
             </div>
-               <Container />
+               <Container route={this.state.route}/>
              </React.Fragment>
         )
     }
