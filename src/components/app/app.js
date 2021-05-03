@@ -1,10 +1,10 @@
 import React , { Component }from 'react'
-import logo from '../app/logo.png'
-import petBreeds from '../app/pet-breeds.png'
-import voteTable from '../app/vote-table.png'
-import imagesSearch from '../app/images-search.png'
-import Container from '../container/container'
-import '../app/app.scss'
+import logo from './img/logo.png'
+import petBreeds from './pet-breeds.png'
+import voteTable from './vote-table.png'
+import imagesSearch from './images-search.png'
+import Container from '../Container'
+import './App.scss'
 
 class HomePageNavigation extends Component  {
 
@@ -21,7 +21,7 @@ class HomePageNavigation extends Component  {
    
     return (
         <React.Fragment>
-        <img className='logo' src={logo}/>
+        <img className='logo' src={logo} alt='logo'/>
         <h1 className='heading'>Hi, MacPaw team!</h1>
         <p className='description'>I'm glad to try my hand at MSI 2021 Front-end test</p>
         <h4>Let's start using The Dog API</h4>

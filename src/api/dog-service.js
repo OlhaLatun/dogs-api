@@ -13,11 +13,11 @@ export default class DogService {
             }
         })
         const dogs = await res.json()
-        return await this._transformDogs(dogs)
+        return this._transformDogs(dogs)
     }
 
-    _transformDogs = (arr) => {
-        return arr.map(item => {
+    _transformDogs(arr) {
+         return arr.map(item => {
             return {
             id: item.id,
             name: item.name,
