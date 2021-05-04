@@ -16,6 +16,26 @@ export default class DogService {
         return this._transformDogs(dogs)
     }
 
+    async getLimitedDogs(limit) {
+        const res = await fetch(this._mainUrl + `breeds?limit=${limit}`, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        const dogs = await res.json()
+        return this._transformDogs(dogs)
+    }
+
+    async getDogsByPage(page) {
+        const res = await fetch(this._mainUrl + `breeds?limit=20&page=${page}`, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+        const dogs = await res.json()
+        return this._transformDogs(dogs)
+    }
+
     _transformDogs(arr) {
          return arr.map(item => {
             return {

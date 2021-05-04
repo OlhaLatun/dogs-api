@@ -1,11 +1,9 @@
-import React , { Component }from 'react'
-
+import React , { Component } from 'react'
 import './Container.scss'
 import SearchPanel from '../SearchPanel'
 import LikeDislikeNavigation from '../LikeDislikeNavigation'
 import BreedsFilter from '../BreedsFilter'
 import BreedsGrid from '../BreedsGrid'
-import DogService from '../../api/dog-service.js'
 
 const HomePage = () => {
     return (
@@ -16,18 +14,6 @@ const HomePage = () => {
 }
 
 export default class Container extends Component {
-
-    dogService = new DogService()
-
-    state = {
-        dogs: null
-    }
-
-    componentDidMount() {
-    this.dogService.getAllDogs()
-    .then(data => this.setState({dogs: data}))
-    .catch(err => console.log('Error occured: ' + err))
-    }
 
     render() {
     
@@ -41,7 +27,7 @@ export default class Container extends Component {
                         </div>
                         <div className='row container'>
                             <BreedsFilter />
-                            <BreedsGrid dogs={this.state.dogs} /> 
+                            <BreedsGrid /> 
                          </div>
                     </div>
                )
