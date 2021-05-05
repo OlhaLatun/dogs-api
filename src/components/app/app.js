@@ -1,8 +1,5 @@
 import React , { Component }from 'react'
 import logo from './img/logo.png'
-import petBreeds from './pet-breeds.png'
-import voteTable from './vote-table.png'
-import imagesSearch from './images-search.png'
 import Container from '../Container'
 import './App.scss'
 
@@ -14,9 +11,9 @@ class HomePageNavigation extends Component  {
 
     render() {
         const navItems = [
-            { id: 'v', name: 'voting', img: voteTable},
-            {id: 'b', name: 'breeds', img: petBreeds},
-            {id: 'g', name: 'gallery', img: imagesSearch},
+            { id: 'v', name: 'voting'},
+            {id: 'b', name: 'breeds'},
+            {id: 'g', name: 'gallery'},
         ]
    
     return (
@@ -55,7 +52,6 @@ export default class App extends Component {
     }
 
     render() {
-
         return (
             <React.Fragment>
             <div className='base'>

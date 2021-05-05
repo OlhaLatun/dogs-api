@@ -2,11 +2,11 @@
 .grid {
     position: sticky;
     top: 185px;
+    overflow: auto;
+    height: 75vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    height: 75vh;
-    overflow: auto;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px;

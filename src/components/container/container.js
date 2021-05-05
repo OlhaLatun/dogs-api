@@ -4,6 +4,7 @@ import SearchPanel from '../SearchPanel'
 import LikeDislikeNavigation from '../LikeDislikeNavigation'
 import BreedsFilter from '../BreedsFilter'
 import BreedsGrid from '../BreedsGrid'
+import DogService from '../../api/dog-service'
 
 const HomePage = () => {
     return (
@@ -15,8 +16,40 @@ const HomePage = () => {
 
 export default class Container extends Component {
 
+    dogService = new DogService()
+
+    state = {
+        dogs: [],
+        selectedBreed: 'all breeds',
+        limit: '20',
+        order: 'ascen'
+    }
+
+    componentDidMount() {
+        this.dogService.getAllDogs()
+        .then(dogs => this.setState({dogs}))
+        .catch(err => console.log(err))
+        }
+
+   ascen = (order) => {
+       this.setState({order})
+    }
+
+    descen = (order) => {
+        this.setState({order})
+    }
+
+    selectedBreed = (selectedBreed) => {
+        this.setState({selectedBreed})
+    }
+
+    setLimit = (limit) => {
+        this.setState({limit})
+    }
+
     render() {
-    
+        const { dogs, order, limit, selectedBreed } = this.state
+      
         switch (this.props.route) {
             case 'breeds':
                 return (
@@ -26,8 +59,12 @@ export default class Container extends Component {
                             <LikeDislikeNavigation />
                         </div>
                         <div className='row container'>
-                            <BreedsFilter />
-                            <BreedsGrid /> 
+                            <BreedsFilter dogs={dogs} 
+                            onClickAscen={this.ascen} 
+                            onClickDescen={this.descen}
+                            onBreedSelected={this.selectedBreed}
+                            onLimit={this.setLimit}/>
+                            <BreedsGrid order={order} limit={limit} selectedBreed={selectedBreed} /> 
                          </div>
                     </div>
                )

@@ -20,16 +20,18 @@ export default class DogService {
         const res = await fetch(this._mainUrl + `breeds?limit=${limit}`, {
             headers: {
                 'Content-Type': 'application/json',
+                'x-api-key': this._APIkey
             }
         })
         const dogs = await res.json()
         return this._transformDogs(dogs)
     }
 
-    async getDogsByPage(page) {
-        const res = await fetch(this._mainUrl + `breeds?limit=20&page=${page}`, {
+    async getDogsByPage(limit, page, order) {
+        const res = await fetch(this._mainUrl + `breeds?limit=${limit}&page=${page}&order=${order}`, {
             headers: {
                 'Content-Type': 'application/json',
+                'x-api-key': this._APIkey
             }
         })
         const dogs = await res.json()

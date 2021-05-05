@@ -7,9 +7,9 @@ class Images extends Component {
     render() {
         return (     
             this.props.dogs.map((dog, i) => {
-                return (<div key={dog.id} 
-                    className={`grid-item grid-item-${i}`}>
-                    <img width='100' src={dog.img} alt={dog.name}/>
+                return (<div key={i}
+                    className={`grid-item grid-item-${dog.id}`}>
+                    <img key={i}  width='100' src={dog.img} alt={dog.name}/>
                     <div className='breed-label'><span>{dog.name}</span></div>
                 </div>)
         })
@@ -23,46 +23,45 @@ export default class BreedsGrid extends Component {
     dogs: [],
     loading: false,
     page: 0,
-    scrolledToBottom: false,
     }
 
     componentDidMount() {
-        this.fetchDogs(this.state.page)
+        const { limit, order } = this.props
+        const { page } = this.state
+        this.fetchDogs(limit, page, order)
     }
 
-    componentDidUpdate(prevState, prevProps) {
-        if (this.state.scrolledToBottom !== prevProps.scrolledToBottom) {
-        this.fetchDogs(this.state.page)
-         }
+   onScrollChange = (e) => {
+        const { scrollTop, scrollHeight, clientHeight } = e.target
+        const { limit, order } = this.props
+
+        if (clientHeight+scrollTop >= scrollHeight - 5) {
+            this.fetchDogs(limit, this.state.page, order)
+        }
+
     }
 
-    fetchDogs(page) {
-        this.dogService.getDogsByPage(page)
+    fetchDogs(limit, page, order) {
+        this.dogService.getDogsByPage(limit, page, order)
         .then(data => 
         this.setState(({dogs, page}) => {
             return {
                 dogs: [...dogs, ...data], 
-                loaded: true, 
-                scrolledToBottom: false,
+                loading: true, 
                 page: ++page
             }
         }))
         .catch(err => console.log(err))
     }
 
-   onScrollChange = (e) => {
-        const { scrollTop, scrollHeight, clientHeight } = e.target
-        if (clientHeight+scrollTop >= scrollHeight - 5) {
-                this.setState({ scrolledToBottom:true})
-        }
-    }
-
     render() {
-        const { loaded, dogs} = this.state 
+        const { dogs, loading } = this.state
+     
         return (
          <div className='grid' onScroll={this.onScrollChange}>
-            {loaded ? <Images dogs={dogs}/>  : <Loader />} 
+            {loading ? <Images dogs={dogs} /> : <Loader />} 
         </div>
         )
     }
 }
+
