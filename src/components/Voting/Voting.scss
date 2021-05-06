@@ -1,0 +1,140 @@
+.voting {
+ margin: 20px;
+ 
+ .btn-back {
+        padding: 9px 12px 6px;
+        margin-right: 10px;
+        background-color: #FBE0DC;
+        border: none;
+        border-radius: 10px;
+
+        &:active {
+            background-color: #FF868E;
+        }
+
+        &:active svg path {
+            fill: #fff;
+        }
+    }
+
+    .voting-label {
+        padding: 7px 30px;
+        background-color: #FF868E;   
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 10px;
+    }
+    .dog-to-vote {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 450px;
+        margin-top: 20px;
+        img {
+            width:100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+         .voting-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: -40px;
+            right: calc(100% / 3);
+            z-index: 100;
+            border: 4px solid #fff;
+            border-radius: 20px;
+            .icon {
+                padding: 25px;
+                svg path {
+                    fill: #fff;
+                }
+                &:nth-child(2) {
+                    padding: 27px;
+                }
+            }
+            .vote-like {
+                background-color: #97EAB9;
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
+                &:hover {
+                    background: rgba(151, 234, 185, 0.3);
+                    svg path {
+                        fill: #97EAB9;
+                    }
+                }
+            }
+             .vote-favs {
+                background-color: #FF868E;
+                border-left: 4px solid #fff ;
+                border-right: 4px solid #fff;
+                border-radius: 0px;
+                 &:hover {
+                    background: rgba(255, 134, 142, 0.3);
+                    svg path {
+                        fill: #FF868E;
+                    }
+                }
+                &:active {
+                    svg path {
+                        fill: #fff;
+                    }
+                }
+            }
+
+            .vote-favs-active {
+                background-color: #f52a38;
+                border-left: 4px solid #fff ;
+                border-right: 4px solid #fff;
+                border-radius: 0px;
+                svg path {
+                        fill: #fff;
+                    }
+            }
+
+             .vote-dislike {
+                background-color: #FFD280;
+                  border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+                  &:hover {
+                    background: rgba(255, 210, 128, 0.3);
+                    svg path {
+                        fill: #FFD280;
+                    }
+                }
+            }
+        }
+    }
+    .log-container {
+        width: 100%;
+        margin-top: 110px;
+        background: #F8F8F7;
+        border-radius: 10px;
+        .log {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            .log-time {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 3px 10px;
+            }
+            .log-icon-like {
+                svg path {
+                     fill:#97EAB9
+                } 
+            }
+             .log-icon-dislike {
+                 svg path {
+                     fill: #FFD280;
+                 }
+            }
+        }
+    }
+   
+}
