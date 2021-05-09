@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BackBtnIcon, LikeIcon, DislikeIcon, FavIcon } from '../Icons/Icons'
+import { BackBtnIcon, LikeIcon, DislikeIcon, FavIcon } from '../icons/icons'
 import Loader from '../Loader'
 import DogService from '../../api/dog-service'
 import '../Voting/Voting.scss'
