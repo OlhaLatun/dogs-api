@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../Container/Container.scss'
+import '../container/container.scss'
 import SearchPanel from '../SearchPanel'
 import LikeDislikeNavigation from '../LikeDislikeNavigation'
 import BreedsFilter from '../BreedsFilter'
