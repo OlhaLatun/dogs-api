@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './BreedsFilter.scss'
-import { BackBtnIcon, AscenIcon, DescenIcon } from '../Icons/Icons'
+import { BackBtnIcon, AscenIcon, DescenIcon } from '../icons/icons'
 
 export default class BreedsFilter extends Component {
 
