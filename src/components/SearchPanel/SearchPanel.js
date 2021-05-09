@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './SearchPanel.scss'
-import { MagnifierIcon } from '../Icons/icons'
+import { MagnifierIcon } from '../icons/icons'
 
 export default class SearchPanel extends Component {
     render() {
