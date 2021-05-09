@@ -2,18 +2,17 @@
 .grid {
     position: sticky;
     top: 185px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    height: 75vh;
     overflow: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: 140px;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px;
    
     .grid-item {
-        position: inherit;
-        margin: 10px;
+        position: relative;
         width: 200px;
         height: 140px;
         img {
@@ -52,37 +51,28 @@
         }
     }
  
-    .grid-item-1 {
-        grid-row-start: 1;
-        grid-row-end: 3;
-        height: 300px;
+    .grid-item:nth-child(10n+1) {
+        grid-row: span 2;
+        height: 290px;
     }
 
-    .grid-item-4 {
-        grid-row-start: 2;
-        grid-row-end: 4;
-        grid-column-start: 2;
-        grid-column-end: 4;
-        width: 420px;
-        height: 300px;
-    }
-    
-    .grid-item-6 {
-    height: 300px;
-    grid-row-start: 4;
-    grid-row-end: 6;
-    grid-column-start: 3;
-    grid-column-end: 4;
+    .grid-item:nth-child(10n+8) {
+        grid-row: span 2;
+        height: 290px;
     }
 
-    .grid-item-7 {
-        width: 420px;
-        height: 300px;
-        grid-row-start: 5;
-        grid-row-end: 7;
-        grid-column-start: 1;
-        grid-column-end: 3;
+    .grid-item:nth-child(10n+4) {
+        grid-column: 2 / span 2;
+        grid-row: span 2;
+        height: 290px;
+        width: 410px;
     }
 
-    
+    .grid-item:nth-child(10n+9) {
+        grid-column: span 2;
+        grid-row: span 2;
+        height: 290px;
+        width: 410px;
+    }
+
 }
