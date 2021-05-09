@@ -61,15 +61,41 @@ export default class DogService {
         return await res.json()
     }
 
+    async getAllFavs() {
+        const res = await fetch(this._mainUrl + 'favourites/?sub_id=olha-user-93', {
+            headers: this._headers,
+        })
+        return await res.json()
+    }
+
+    async removeFavs(id) {
+        const res = await fetch(this._mainUrl + 'favourites/' + id, {
+            method: 'DELETE',
+            headers: this._headers
+        })
+        return await res.json()
+    }
+
+    async getVotes() {
+        const res = await fetch(this._mainUrl + 'votes/limit=20&page=0&sub_id=olha-user-93', {
+            headers: this._headers,
+        })
+        return await res.json()
+    }
+
     _transformDogs(arr) {
         return arr.map(item => {
             return {
                 id: item.id,
                 name: item.name,
-                img: item.image.url
+                img: item.image.url,
+                bredFor: item.bred_for,
+                height: item.height.metric,
+                weight: item.weight.metric,
+                lifeSpan: item.life_span,
+                temperament: item.temperament
             }
         })
-
     }
 }
 

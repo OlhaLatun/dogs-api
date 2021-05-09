@@ -5,17 +5,16 @@ import { BackBtnIcon, AscenIcon, DescenIcon } from '../Icons/Icons'
 export default class BreedsFilter extends Component {
 
     state = {
+        categories: [],
         selectedBreed: 'all breeds',
         limit: '20',
     }
 
     onClickAscen = (order) => {
-        this.setState({ order })
         this.props.onClickAscen(order)
     }
 
     onClickDescen = (order) => {
-        this.setState({ order })
         this.props.onClickDescen(order)
     }
 

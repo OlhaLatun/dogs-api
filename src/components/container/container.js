@@ -3,9 +3,11 @@ import './Container.scss'
 import SearchPanel from '../SearchPanel'
 import LikeDislikeNavigation from '../LikeDislikeNavigation'
 import BreedsFilter from '../BreedsFilter'
-import BreedsGrid from '../BreedsGrid'
+import { BreedsGrid } from '../BreedsGrid/BreedsGrid'
 import Voting from '../Voting'
 import DogService from '../../api/dog-service'
+import BreedDetails from '../BreedDetails'
+import LikeDislikePage from '../LikeDislikePage'
 
 const HomePage = () => {
     return (
@@ -21,9 +23,13 @@ export default class Container extends Component {
 
     state = {
         dogs: [],
-        selectedBreed: 'all breeds',
+        selectedBreed: {},
         limit: '20',
-        order: 'ASC'
+        order: 'ASC',
+        greedItemClicked: false,
+        likeDislikeBackClicked: true,
+        dogDetails: {},
+        likeDislikeNav: ''
     }
 
     componentDidMount() {
@@ -40,16 +46,50 @@ export default class Container extends Component {
         this.setState({ order })
     }
 
-    selectedBreed = (selectedBreed) => {
-        this.setState({ selectedBreed })
+    selectedBreed = (name) => {
+        let dog = this.state.dogs.find(dog => dog.name === name)
+        if (dog) {
+            this.setState({ selectedBreed: dog })
+        } else {
+            this.setState({ selectedBreed: false })
+        }
     }
 
     setLimit = (limit) => {
         this.setState({ limit })
     }
 
+    onGreedItemClick = (name) => {
+        this.setState({ greedItemClicked: true })
+        let dog = this.state.dogs.find(dog => dog.name === name)
+        this.setState({ dogDetails: dog })
+    }
+
+    detailsBackBtnClicked = () => {
+        this.setState({ greedItemClicked: false })
+    }
+
+    likeDislikeBackBtnClicked = () => {
+        this.setState({ likeDislikeBackClicked: false })
+    }
+
+    handleLikeDislikeNav = (str) => {
+        this.setState({ likeDislikeNav: str })
+    }
+
     render() {
-        const { dogs, order, limit, selectedBreed } = this.state
+        const { dogs, order, limit, selectedBreed, greedItemClicked, dogDetails, likeDislikeNav, likeDislikeBackClicked } = this.state
+        const breedsComponent = greedItemClicked ?
+            <BreedDetails dog={dogDetails} backBtnClick={this.detailsBackBtnClicked} /> :
+            <React.Fragment>
+                <BreedsFilter dogs={dogs}
+                    onClickAscen={this.ascen}
+                    onClickDescen={this.descen}
+                    onBreedSelected={this.selectedBreed}
+                    onLimit={this.setLimit} />
+                <BreedsGrid order={order} limit={limit} selectedBreed={selectedBreed} onClick={this.onGreedItemClick} />
+            </React.Fragment>
+
 
         switch (this.props.route) {
             case 'breeds':
@@ -60,12 +100,7 @@ export default class Container extends Component {
                             <LikeDislikeNavigation />
                         </div>
                         <div className='row container'>
-                            <BreedsFilter dogs={dogs}
-                                onClickAscen={this.ascen}
-                                onClickDescen={this.descen}
-                                onBreedSelected={this.selectedBreed}
-                                onLimit={this.setLimit} />
-                            <BreedsGrid order={order} limit={limit} selectedBreed={selectedBreed} />
+                            {breedsComponent}
                         </div>
                     </div>
                 )
@@ -74,7 +109,7 @@ export default class Container extends Component {
                     <div className='mutable'>
                         <div className='row'>
                             <SearchPanel />
-                            <LikeDislikeNavigation />
+                            <LikeDislikeNavigation onClick={this.handleLikeDislikeNav} />
                         </div>
                         <div className='row container'>
                             <Voting />
@@ -83,7 +118,7 @@ export default class Container extends Component {
                 )
             case 'gallery':
                 return (
-                    <h1>GALLERY</h1>
+                    <h1>GALLERY in progress...</h1>
                 )
             default:
                 return (

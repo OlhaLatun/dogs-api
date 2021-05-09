@@ -1,0 +1,82 @@
+
+.breed-details {
+position: relative;
+margin: 20px;
+width: 100%;
+
+ .btn-back {
+        padding: 9px 12px 6px;
+        margin: 0 10px;
+        background-color: #FBE0DC;
+        border: none;
+        border-radius: 10px;
+
+        &:active {
+            background-color: #FF868E;
+        }
+
+        &:active svg path {
+            fill: #fff;
+        }
+    }
+
+    .breeds-label {
+        padding: 7px 30px;
+        margin-right: 10px;
+        background-color: #FBE0DC;
+        color: #FF868E; 
+        text-transform: uppercase;
+        font-weight: 500;
+        border-radius: 10px;
+    }
+  
+    .breed-id {
+        padding:  6px 30px;
+        color: #fff;
+        background-color: #FF868E;
+        border-radius: 10px;
+    }
+
+      .img {
+        margin: 20px 10%;
+        height: 450px;
+        img {
+            width: 100%;
+            height: inherit;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+    }
+
+    .details {
+        position: relative;
+        margin: 40px 70px;
+        border: 2px solid #FBE0DC;
+        border-radius: 20px;
+        h1 {
+            position: absolute;
+            top: -50px;
+            left: 15%;
+            padding: 0 20px;
+            background-color: #fff;
+        }
+        p {
+            text-align: center;
+            color: #8C8C8C;
+        }
+        .flex {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+            .description span, .params span {
+                font-weight: 500;
+            }
+            .description {
+                width: 40%;
+            }
+            .params {
+                list-style: none;
+            }
+        }
+    }
+}

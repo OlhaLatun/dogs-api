@@ -11,9 +11,9 @@ class HomePageNavigation extends Component {
 
     render() {
         const navItems = [
-            { id: 'v', name: 'voting' },
-            { id: 'b', name: 'breeds' },
-            { id: 'g', name: 'gallery' },
+            { name: 'voting' },
+            { name: 'breeds' },
+            { name: 'gallery' },
         ]
 
         return (
@@ -23,9 +23,9 @@ class HomePageNavigation extends Component {
                 <p className='description'>I'm glad to try my hand at MSI 2021 Front-end test</p>
                 <h4>Let's start using The Dog API</h4>
                 <div className='navigation'>
-                    {navItems.map(item => {
+                    {navItems.map((item, i) => {
                         return (
-                            <div key={item.id} className='card'>
+                            <div key={i} className='card'>
                                 <div className={`card-img card-${item.name}`}>
                                 </div>
                                 <button className='nav-btn' onClick={() => this.onClickChange(item.name)}>
