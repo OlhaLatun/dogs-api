@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BackBtnIcon } from '../Icons/Icons'
+import { BackBtnIcon } from '../icons/icons'
 import '../BreedDetails/BreedDetails.scss'
 
 export default class BreedDetails extends Component {
