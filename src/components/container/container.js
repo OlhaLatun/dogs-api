@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Container.scss'
+import '../Container/Container.scss'
 import SearchPanel from '../SearchPanel'
 import LikeDislikeNavigation from '../LikeDislikeNavigation'
 import BreedsFilter from '../BreedsFilter'
@@ -7,7 +7,6 @@ import { BreedsGrid } from '../BreedsGrid/BreedsGrid'
 import Voting from '../Voting'
 import DogService from '../../api/dog-service'
 import BreedDetails from '../BreedDetails'
-import LikeDislikePage from '../LikeDislikePage'
 
 const HomePage = () => {
     return (
