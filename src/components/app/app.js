@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from './img/logo.png'
 import Container from '../container'
-import './App.scss'
+import './app.scss'
 
 class HomePageNavigation extends Component {
 
