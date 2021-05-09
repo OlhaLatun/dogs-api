@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './LikeDislikeNavigation.scss'
-import { LikeIcon, DislikeIcon, FavIcon } from '../Icons/Icons'
+import { LikeIcon, DislikeIcon, FavIcon } from '../icons/icons'
 
 export default class LikeDislikeNavigation extends Component {
 
