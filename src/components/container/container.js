@@ -26,7 +26,6 @@ export default class Container extends Component {
         limit: '20',
         order: 'ASC',
         greedItemClicked: false,
-        likeDislikeBackClicked: true,
         dogDetails: {},
         likeDislikeNav: ''
     }
@@ -68,16 +67,12 @@ export default class Container extends Component {
         this.setState({ greedItemClicked: false })
     }
 
-    likeDislikeBackBtnClicked = () => {
-        this.setState({ likeDislikeBackClicked: false })
-    }
-
     handleLikeDislikeNav = (str) => {
         this.setState({ likeDislikeNav: str })
     }
 
     render() {
-        const { dogs, order, limit, selectedBreed, greedItemClicked, dogDetails, likeDislikeNav, likeDislikeBackClicked } = this.state
+        const { dogs, order, limit, selectedBreed, greedItemClicked, dogDetails } = this.state
         const breedsComponent = greedItemClicked ?
             <BreedDetails dog={dogDetails} backBtnClick={this.detailsBackBtnClicked} /> :
             <React.Fragment>
